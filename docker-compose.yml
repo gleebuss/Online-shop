@@ -40,6 +40,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: app_db
+    ports:
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -50,6 +52,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - "6379:6379"
     volumes:
       - redis_data:/data
 
@@ -60,6 +64,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    ports:
+      - "27017:27017"
     volumes:
       - mongo_data:/data/db
 
