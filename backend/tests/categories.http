@@ -1,0 +1,56 @@
+### Получить все категории
+GET http://localhost:8000/categories/
+Accept: application/json
+
+###
+
+### Получить категорию по ID
+GET http://localhost:8000/categories/1
+Accept: application/json
+
+###
+
+### Создать категорию (только админ)
+POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+Content-Type: application/json
+
+{
+  "name": "iPhone",
+  "description": "Категория смартфонов Apple"
+}
+
+###
+
+POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+Content-Type: application/json
+
+{
+  "name": "Samsung",
+  "description": "Категория смартфонов Samsung"
+}
+
+###
+
+POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+Content-Type: application/json
+
+{
+  "name": "Прочее",
+  "description": "Все остальное"
+}
+
+###
+
+### Обновить категорию
+PUT http://localhost:8000/categories/1?session_id=df36879f-a504-4f88-b697-9879848241f4
+Content-Type: application/json
+
+{
+  "name": "iPhone",
+  "description": "Обновленное описание"
+}
+
+###
+
+### Удалить категорию
+DELETE http://localhost:8000/categories/1?session_id=df36879f-a504-4f88-b697-9879848241f4

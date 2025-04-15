@@ -1,0 +1,22 @@
+### Регистрация пользователя
+POST http://localhost:8000/user/auth/register
+Content-Type: application/json
+
+{
+  "name": "Alice Example",
+  "email": "alice@example.com",
+  "password": "securepass",
+  "phone": "+1234567890",
+  "address": "123 Wonderland St"
+}
+
+###
+
+### Авторизация пользователя
+POST http://localhost:8000/user/auth/login
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "securepass"
+}
