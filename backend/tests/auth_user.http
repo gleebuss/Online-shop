@@ -1,5 +1,5 @@
 ### Регистрация пользователя
-POST http://localhost:8000/user/auth/register
+POST {{$dotenv BASE_URL}}/user/auth/register
 Content-Type: application/json
 
 {
@@ -13,7 +13,7 @@ Content-Type: application/json
 ###
 
 ### Авторизация пользователя
-POST http://localhost:8000/user/auth/login
+POST {{$dotenv BASE_URL}}/user/auth/login
 Content-Type: application/json
 
 {

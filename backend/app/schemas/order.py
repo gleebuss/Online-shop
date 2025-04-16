@@ -4,6 +4,7 @@ from typing import Optional
 
 class OrderIn(BaseModel):
     customer_id: int
+    order_date: datetime
     total_amount: float
     status: Optional[str] = "в обработке"
 

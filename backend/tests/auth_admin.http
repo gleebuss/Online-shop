@@ -1,5 +1,5 @@
 ### Регистрация админа
-POST http://localhost:8000/admin/auth/register
+POST {{$dotenv BASE_URL}}/admin/auth/register
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 ###
 
 ### Авторизация админа
-POST http://localhost:8000/admin/auth/login
+POST {{$dotenv BASE_URL}}/admin/auth/login
 Content-Type: application/json
 
 {

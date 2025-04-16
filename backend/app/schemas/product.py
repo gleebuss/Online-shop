@@ -1,5 +1,6 @@
 from pydantic import BaseModel, HttpUrl
-from typing import Optional
+from typing import Optional, List
+from app.schemas.promotion import PromotionOut
 
 class ProductBase(BaseModel):
     name: str
@@ -21,8 +22,16 @@ class ProductUpdate(BaseModel):
     description: Optional[str] = None
     attributes: Optional[dict] = None
 
-class ProductOut(ProductBase):
+class ProductOut(BaseModel):
     id: int
+    name: str
+    price: float
+    category_id: int
+    stock_quantity: int
+    image: Optional[str]
+    description: Optional[str]
+    attributes: Optional[dict]
+    promotions: Optional[List[PromotionOut]] = []
 
     class Config:
         orm_mode = True

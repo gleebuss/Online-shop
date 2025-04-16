@@ -1,17 +1,17 @@
 ### Получить список всех продуктов
-GET http://localhost:8000/products/
+GET {{$dotenv BASE_URL}}/products/
 Accept: application/json
 
 ###
 
 ### Получить продукт по ID
-GET http://localhost:8000/products/1
+GET {{$dotenv BASE_URL}}/products/1
 Accept: application/json
 
 ###
 
 ### Создать новый продукт (только для админа)
-POST http://localhost:8000/products/?session_id=5b04ba69-cf95-4da6-8ff3-06fea2a77b48
+POST {{$dotenv BASE_URL}}/products/?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -29,8 +29,8 @@ Content-Type: application/json
 
 ###
 
-### PUT: Обновить товар
-PUT http://localhost:8000/products/1?session_id=5b04ba69-cf95-4da6-8ff3-06fea2a77b48
+### PUT: Обновить товар (полное обновление)
+PUT {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -46,8 +46,10 @@ Content-Type: application/json
   }
 }
 
+###
+
 ### PATCH: Частичное обновление товара
-PATCH http://localhost:8000/products/1?session_id=5b04ba69-cf95-4da6-8ff3-06fea2a77b48
+PATCH {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -55,5 +57,7 @@ Content-Type: application/json
   "stock_quantity": 80
 }
 
+###
+
 ### DELETE: Удалить товар
-DELETE http://localhost:8000/products/1?session_id=5b04ba69-cf95-4da6-8ff3-06fea2a77b48
+DELETE {{$dotenv BASE_URL}}/products/1?session_id={{$dotenv SESSION_ID_ADMIN}}

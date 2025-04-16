@@ -7,7 +7,7 @@ from app.models.postgres_models import Order
 from app.schemas.order import OrderIn, OrderOut, OrderUpdate
 from typing import List
 
-router = APIRouter(prefix="/orders", tags=["Orders"])
+router = APIRouter()
 
 @router.get("/", response_model=List[OrderOut])
 async def get_orders(db: AsyncSession = Depends(get_db)):
@@ -16,7 +16,11 @@ async def get_orders(db: AsyncSession = Depends(get_db)):
 
 @router.get("/{order_id}", response_model=OrderOut)
 async def get_order(order_id: int, db: AsyncSession = Depends(get_db)):
+    cached = await get_cached_order(order_id)
+    if cached:
+        return cached
     order = await db.get(Order, order_id)
+    await cache_order(order_id, order.__dict__)
     if not order:
         raise HTTPException(status_code=404, detail="Order not found")
     return order

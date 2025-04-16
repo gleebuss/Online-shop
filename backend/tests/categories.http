@@ -1,17 +1,17 @@
 ### Получить все категории
-GET http://localhost:8000/categories/
+GET {{$dotenv BASE_URL}}/categories/
 Accept: application/json
 
 ###
 
 ### Получить категорию по ID
-GET http://localhost:8000/categories/1
+GET {{$dotenv BASE_URL}}/categories/1
 Accept: application/json
 
 ###
 
 ### Создать категорию (только админ)
-POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/categories/?session_id=df36879f-a504-4f88-b697-9879848241f4
+POST {{$dotenv BASE_URL}}/categories/?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -42,7 +42,7 @@ Content-Type: application/json
 ###
 
 ### Обновить категорию
-PUT http://localhost:8000/categories/1?session_id=df36879f-a504-4f88-b697-9879848241f4
+PUT {{$dotenv BASE_URL}}/categories/1?session_id={{$dotenv SESSION_ID_ADMIN}}
 Content-Type: application/json
 
 {
@@ -53,4 +53,4 @@ Content-Type: application/json
 ###
 
 ### Удалить категорию
-DELETE http://localhost:8000/categories/1?session_id=df36879f-a504-4f88-b697-9879848241f4
+DELETE {{$dotenv BASE_URL}}/categories/1?session_id={{$dotenv SESSION_ID_ADMIN}}

@@ -11,6 +11,10 @@ from app.db.redis import get_redis
 from app.models.postgres_models import Customer
 from app.schemas.user import UserRegister, UserLogin, UserOut
 
+from app.db.mongo import create_user_profile
+from app.schemas.user_profile import UserProfileCreate
+from app.db.mongo import db
+
 router = APIRouter()
 
 @router.post("/register", response_model=UserOut)
@@ -32,6 +36,7 @@ async def register_user(data: UserRegister, db: AsyncSession = Depends(get_db)):
     db.add(new_user)
     await db.commit()
     await db.refresh(new_user)
+    create_user_profile(mongo_db, UserProfileCreate(customer_id=str(user.id)))
     return new_user
 
 @router.post("/login")
